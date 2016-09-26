@@ -1,0 +1,19 @@
+version: 1.0.{build}
+pull_requests:
+  do_not_increment_build_number: true
+branches:
+  only:
+  - master
+  - develop
+clone_depth: 1
+build:
+  verbosity: minimal
+notifications:
+- provider: Email
+  to:
+  - jitedev@gmail.com
+  subject: Failed build.
+  message: The latest build failed.
+  on_build_success: false
+  on_build_failure: true
+  on_build_status_changed: false
