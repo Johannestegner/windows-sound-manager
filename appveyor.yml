@@ -6,8 +6,10 @@ branches:
   - master
   - develop
 clone_depth: 1
+before_build:
+    - cmd: nuget restore
 build:
-  verbosity: minimal
+  verbosity: normal
 notifications:
 - provider: Email
   to:
@@ -15,5 +17,5 @@ notifications:
   subject: Failed build.
   message: The latest build failed.
   on_build_success: false
-  on_build_failure: true
-  on_build_status_changed: false
+  on_build_failure: false
+  on_build_status_changed: true
