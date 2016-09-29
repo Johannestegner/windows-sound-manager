@@ -13,9 +13,7 @@ build:
 notifications:
 - provider: Email
   to:
-  - jitedev@gmail.com
-  subject: Failed build.
-  message: The latest build failed.
-  on_build_success: false
-  on_build_failure: false
+  - jitedev+appveyor@gmail.com
+  on_build_success: true
+  on_build_failure: true
   on_build_status_changed: true
