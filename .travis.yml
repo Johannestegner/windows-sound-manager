@@ -1,0 +1,16 @@
+language: csharp
+solution: wsm.sln
+install:
+  - nuget restore wsm.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release wsm.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./Tests/bin/Release/Tests.dll
+notifications:
+  email:
+    recipents:
+      - jitedev@gmail.com
+    on_success: change
+    on_failure: always
+git:
+  depth: 1
