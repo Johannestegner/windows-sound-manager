@@ -1,23 +1,19 @@
 ﻿#region License etc.
 
-// File TargetTest.cs is part of the "Windows Sound Manager" project.
-// Created 2016 09 28 by Johannes Tegnér
-// 
-// #region License
+// ///////////////////////////////////////////////////////////////////////////////////
+// File Target.cs is part of the "Windows Sound Manager" project.                   //
+// Created 2016 09 29 by Johannes Tegnér                                            //
+// ///////////////////////////////////////////////////////////////////////////////////
 // MIT License
-// 
 // Copyright (c) 2016 Johannes
-// 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
 // The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
-// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -25,38 +21,32 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-// #endregion
-// 
-// Source: https://github.com/Johannestegner/windows-sound-manager
-// Issue tracker: https://github.com/Johannestegner/windows-sound-manager/issues
-// Contact: <Johannes Tegnér> jitedev@gmail.com
-
+// //////////////////////////////////////////////////////////////////////////////////
+// Source: https://github.com/Johannestegner/windows-sound-manager                 //
+// Issue tracker: https://github.com/Johannestegner/windows-sound-manager/issues   //
+// Contact: <Johannes Tegnér> jitedev@gmail.com                                    //
+// //////////////////////////////////////////////////////////////////////////////////
 #endregion
-
-using JohannesTegner.WSM.Shared.Interfaces;
-using JohannesTegner.WSM.TargetHandler;
-using NUnit.Framework;
 
 namespace JohannesTegner.WSM.Tests.TargetHandler
 {
+  using JohannesTegner.WSM.Shared.Interfaces;
+  using JohannesTegner.WSM.TargetHandler;
+
+  using NUnit.Framework;
+
+  internal class TestSource : ISource
+  {
+  }
+
   [TestFixture]
-  public class TargetTest
+  public class TargetTests
   {
     [SetUp]
     public void SetUp()
     {
       this.target = new Target("test", "icon/path", 10, TestGuid);
     }
-
-    [TearDown]
-    public void TearDown()
-    {
-    }
-
-    internal class TestSource : ISource
-    {
-    }
-
 
     private Target target = null;
     private const string TestGuid = "91895597-b64f-4570-be71-42327963a089";
