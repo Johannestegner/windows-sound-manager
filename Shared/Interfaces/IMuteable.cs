@@ -39,11 +39,7 @@ namespace JohannesTegner.WSM.Shared.Interfaces
     ///   Set mute state.
     ///   True equals no sound, false equal sound depending on volume.
     /// </summary>
-    bool Mute
-    {
-      get;
-      set;
-    }
+    bool Muted { get; set; }
 
     #endregion
   }

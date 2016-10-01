@@ -26,17 +26,38 @@
 // Issue tracker: https://github.com/Johannestegner/windows-sound-manager/issues   //
 // Contact: <Johannes Tegnér> jitedev@gmail.com                                    //
 // //////////////////////////////////////////////////////////////////////////////////
+
 #endregion
+
+using System.Collections.Generic;
+using JohannesTegner.WSM.Shared.Interfaces;
+using JohannesTegner.WSM.TargetHandler;
+using NUnit.Framework;
 
 namespace JohannesTegner.WSM.Tests.TargetHandler
 {
-  using JohannesTegner.WSM.Shared.Interfaces;
-  using JohannesTegner.WSM.TargetHandler;
-
-  using NUnit.Framework;
-
   internal class TestSource : ISource
   {
+    #region  Fields and Properties
+
+    public bool Muted { get; set; }
+    public int Volume { get; set; }
+    public string Icon { get; set; }
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public IReadOnlyList<ITarget> Targets { get; set; }
+
+    #endregion
+
+    public bool AddTarget(ITarget target)
+    {
+      return true;
+    }
+
+    public bool RemoveTarget(ITarget target)
+    {
+      return true;
+    }
   }
 
   [TestFixture]
@@ -48,7 +69,7 @@ namespace JohannesTegner.WSM.Tests.TargetHandler
       this.target = new Target("test", "icon/path", 10, TestGuid);
     }
 
-    private Target target = null;
+    private Target target;
     private const string TestGuid = "91895597-b64f-4570-be71-42327963a089";
 
     [Test]
@@ -78,11 +99,11 @@ namespace JohannesTegner.WSM.Tests.TargetHandler
     }
 
     [Test]
-    public void TestMute()
+    public void TestMuted()
     {
-      Assert.IsFalse(this.target.Mute);
-      this.target.Mute = true;
-      Assert.IsTrue(this.target.Mute);
+      Assert.IsFalse(this.target.Muted);
+      this.target.Muted = true;
+      Assert.IsTrue(this.target.Muted);
     }
 
     [Test]

@@ -29,9 +29,48 @@
 
 #endregion
 
+using System.Collections.Generic;
+
 namespace JohannesTegner.WSM.Shared.Interfaces
 {
-  public interface ISource
+  public interface ISource : IMuteable, IVolumeChangeable
   {
+    #region  Fields and Properties
+
+    /// <summary>
+    ///   Icon path for source.
+    /// </summary>
+    string Icon { get; }
+
+    /// <summary>
+    ///   Identifier of the source.
+    /// </summary>
+    string Id { get; }
+
+    /// <summary>
+    ///   Target source name.
+    /// </summary>
+    string Name { get; }
+
+    /// <summary>
+    ///   List of currently used targets.
+    /// </summary>
+    IReadOnlyList<ITarget> Targets { get; }
+
+    #endregion
+
+    /// <summary>
+    ///   Add a target to the target list.
+    /// </summary>
+    /// <param name="target">Target to add.</param>
+    /// <returns>Result.</returns>
+    bool AddTarget(ITarget target);
+
+    /// <summary>
+    ///   Remove target from the target list.
+    /// </summary>
+    /// <param name="target">Target to remove.</param>
+    /// <returns>Result.</returns>
+    bool RemoveTarget(ITarget target);
   }
 }

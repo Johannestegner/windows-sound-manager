@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SourceHandler\SourceTests.cs" />
     <Compile Include="TargetHandler\TargetTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -48,7 +49,6 @@
   <ItemGroup>
     <Folder Include="Runner\" />
     <Folder Include="Shared\" />
-    <Folder Include="SourceHandler\" />
     <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>

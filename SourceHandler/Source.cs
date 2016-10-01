@@ -33,14 +33,30 @@ using System;
 using System.Collections.Generic;
 using JohannesTegner.WSM.Shared.Interfaces;
 
-namespace JohannesTegner.WSM.TargetHandler
+namespace JohannesTegner.WSM.SourceHandler
 {
-  public class Target : ITarget
+  public class Source : ISource
   {
     #region  Fields and Properties
 
-    private readonly List<ISource> sources;
+    private readonly List<ITarget> targets;
     private int volume;
+
+    /// <inheritdoc />
+    public bool Muted { get; set; }
+
+    /// <inheritdoc />
+    public int Volume
+    {
+      get
+      {
+        return this.volume;
+      }
+      set
+      {
+        this.volume = Math.Max(0, Math.Min(100, value));
+      }
+    }
 
     /// <inheritdoc />
     public string Icon { get; private set; }
@@ -52,62 +68,45 @@ namespace JohannesTegner.WSM.TargetHandler
     public string Name { get; private set; }
 
     /// <inheritdoc />
-    public int Volume
+    public IReadOnlyList<ITarget> Targets
     {
       get
       {
-        return this.volume;
-      }
-
-      set
-      {
-        this.volume = Math.Max(0, Math.Min(100, value));
+        return this.targets.AsReadOnly();
       }
     }
-
-    /// <inheritdoc />
-    public IReadOnlyList<ISource> Sources
-    {
-      get
-      {
-        return this.sources.AsReadOnly();
-      }
-    }
-
-    /// <inheritdoc />
-    public bool Muted { get; set; }
 
     #endregion
 
-    public Target(string name, string icon, int volume, string id)
+    public Source(string name, string id, string icon, int volume)
     {
-      Volume = volume;
-      Icon = icon;
-      Id = id;
       Name = name;
-      this.sources = new List<ISource>();
+      Id = id;
+      Icon = icon;
+      Volume = volume;
+      this.targets = new List<ITarget>();
+    }
+
+    internal void AddTarget()
+    {
     }
 
     /// <inheritdoc />
-    public bool AddSource(ISource source)
+    public bool AddTarget(ITarget target)
     {
-      if (this.sources.Contains(source)) return false;
-
-      source.AddTarget(this);
-      if (!source.AddTarget(this))
+      if (this.targets.Contains(target))
       {
         return false;
       }
 
-      this.sources.Add(source);
+      this.targets.Add(target);
       return true;
     }
 
     /// <inheritdoc />
-    public bool RemoveSource(ISource source)
-
+    public bool RemoveTarget(ITarget target)
     {
-      return source.RemoveTarget(this) && this.sources.Remove(source);
+      return this.targets.Contains(target) && this.targets.Remove(target);
     }
   }
 }
