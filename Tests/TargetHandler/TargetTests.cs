@@ -1,11 +1,11 @@
 ﻿#region License etc.
 
 // ///////////////////////////////////////////////////////////////////////////////////
-// File Target.cs is part of the "Windows Sound Manager" project.                   //
-// Created 2016 09 29 by Johannes Tegnér                                            //
+// File TargetTests.cs is part of the "Windows Sound Manager" project.
+// Created 2016 09 29 by Johannes Tegnér
 // ///////////////////////////////////////////////////////////////////////////////////
 // MIT License
-// Copyright (c) 2016 Johannes
+// Copyright (c) 2016 Johannes Tegnér
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -22,9 +22,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 // //////////////////////////////////////////////////////////////////////////////////
-// Source: https://github.com/Johannestegner/windows-sound-manager                 //
-// Issue tracker: https://github.com/Johannestegner/windows-sound-manager/issues   //
-// Contact: <Johannes Tegnér> jitedev@gmail.com                                    //
+// Source: https://github.com/Johannestegner/windows-sound-manager
+// Issue tracker: https://github.com/Johannestegner/windows-sound-manager/issues
+// Contact: <Johannes Tegnér> jitedev@gmail.com
 // //////////////////////////////////////////////////////////////////////////////////
 
 #endregion
