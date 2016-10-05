@@ -1,0 +1,54 @@
+﻿#region License etc.
+
+// ///////////////////////////////////////////////////////////////////////////////////
+// File SetupFixture.cs is part of the "Windows Sound Manager" project.
+// Created 2016 09 29 by Johannes Tegnér
+// ///////////////////////////////////////////////////////////////////////////////////
+// MIT License
+// Copyright (c) 2016 Johannes Tegnér
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+// //////////////////////////////////////////////////////////////////////////////////
+// Source: https://github.com/Johannestegner/windows-sound-manager
+// Issue tracker: https://github.com/Johannestegner/windows-sound-manager/issues
+// Contact: <Johannes Tegnér> jitedev@gmail.com
+// //////////////////////////////////////////////////////////////////////////////////
+
+#endregion
+
+using JohannesTegner.Utils;
+using JohannesTegner.WSM.Tests.Mocks;
+using NUnit.Framework;
+
+namespace JohannesTegner.WSM.Tests
+{
+  [SetUpFixture]
+  public class SetupFixture
+  {
+    [SetUp]
+    public void BeforeTests()
+    {
+      // Set the logger to use a string writer stream instead of the file stream that it uses else.
+      // This to make it possible to check what is added to the string writer and to not create any files during test.
+      Log.Writer = new TestLoggerStringWriter();
+    }
+
+    [TearDown]
+    public void AfterTests()
+    {
+    }
+  }
+}
